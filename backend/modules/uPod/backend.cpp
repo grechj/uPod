@@ -22,12 +22,15 @@
 
 #include "backend.h"
 #include "filemanager.h"
+#include "PodcastIndexAPI.h"
 
 void BackendPlugin::registerTypes(const char *uri)
 {
     Q_ASSERT(uri == QLatin1String("uPod"));
 
     qmlRegisterType<FileManager>(uri, 1, 0, "FileManager");
+    qmlRegisterType<PodcastIndexAPI>("PodcastIndex", 1, 0, 
+"PodcastIndexAPI");
 }
 
 void BackendPlugin::initializeEngine(QQmlEngine *engine, const char *uri)

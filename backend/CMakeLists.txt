@@ -1,3 +1,6 @@
+add_subdirectory(modules/uPod)
+add_subdirectory(modules/PodcastIndex)
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -11,12 +14,21 @@ set(
 add_library(uPodbackend MODULE
     ${uPodbackend_SRCS}
 )
+# Add PodcastIndex module
+add_subdirectory(modules/PodcastIndex)
+add_subdirectory(modules/uPod)
 
 set_target_properties(uPodbackend PROPERTIES
          LIBRARY_OUTPUT_DIRECTORY uPod)
 
 # qt5_use_modules(uPodbackend Gui Qml Quick)
-target_link_libraries(uPodbackend Qt5::Qml Qt5::Gui Qt5::Quick)
+# Link libraries
+target_link_libraries(uPodbackend 
+    Qt5::Qml 
+    Qt5::Gui 
+    Qt5::Quick 
+    podcastindex
+)
 
 # Copy qmldir file to build dir for running in QtCreator
 add_custom_target(uPodbackend-qmldir ALL
