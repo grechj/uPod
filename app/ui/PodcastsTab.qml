@@ -1,13 +1,13 @@
 /*
  * Copyright 2015-2016 Michael Sheldon <mike@mikeasoft.com>
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -41,7 +41,7 @@ Page {
         visible: podcastPage.header === standardHeader
 
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
 
         leadingActionBar {
@@ -66,7 +66,7 @@ Page {
         visible: podcastPage.header === searchHeader
 
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
 
         contents: Loader {
@@ -148,7 +148,7 @@ Page {
             right: parent.right
             bottom: parent.bottom
         }
-        sourceComponent: podphoenix.settings.showListView ? listviewComponent : cardviewComponent
+        sourceComponent: upod.settings.showListView ? listviewComponent : cardviewComponent
     }
 
     Component {
@@ -162,7 +162,7 @@ Page {
             model: sortedPodcastModel
             delegate: Card {
                 id: albumCard
-                coverArt: model.image !== undefined ? model.image : Qt.resolvedUrl("../graphics/podphoenix.png")
+                coverArt: model.image !== undefined ? model.image : Qt.resolvedUrl("../graphics/upod.png")
                 secondaryText: model.episodeCount > 0 ? model.episodeCount
                                                       : ""
                 onClicked: {
@@ -205,19 +205,19 @@ Page {
 
                 height: listItemLayout.height
                 divider.visible: false
-                highlightColor: podphoenix.appTheme.hightlightListView
+                highlightColor: upod.appTheme.hightlightListView
 
                 ListItemLayout {
                     id: listItemLayout
                     title.text: model.name !== undefined ? model.name.trim() : "Undefined"
                     summary.text: model.episodeCount > 0 ? i18n.tr("%1 unheard episode", "%1 unheard episodes", model.episodeCount).arg(model.episodeCount)
                                                           : ""
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
 
                     Image {
                         height: width
                         width: units.gu(6)
-                        source: model.image !== undefined ? model.image : Qt.resolvedUrl("../graphics/podphoenix.png")
+                        source: model.image !== undefined ? model.image : Qt.resolvedUrl("../graphics/upod.png")
                         SlotsLayout.position: SlotsLayout.Leading
                         sourceSize { width: width; height: height }
                     }
@@ -255,7 +255,7 @@ Page {
             Scrollbar {
                 flickableItem: listView
                 align: Qt.AlignTrailing
-                StyleHints { sliderColor: podphoenix.appTheme.focusText }
+                StyleHints { sliderColor: upod.appTheme.focusText }
             }
 
             PullToRefresh {

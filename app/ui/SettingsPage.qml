@@ -1,13 +1,13 @@
 /*
- * Copyright 2015-2016 Podphoenix Team
+ * Copyright 2015-2016 uPod Team
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -34,7 +34,7 @@ Page {
         title: i18n.tr("Settings")
 
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
 
         leadingActionBar {
@@ -68,22 +68,22 @@ Page {
                     width: parent.width
                     minimumValue: 0
                     maximumValue: 60
-                    value: podphoenix.settings.skipForward
+                    value: upod.settings.skipForward
                     function formatValue(v) { return i18n.tr("%1 seconds").arg(Math.round(v)) }
-                    StyleHints { foregroundColor: podphoenix.appTheme.focusText }
+                    StyleHints { foregroundColor: upod.appTheme.focusText }
                 }
 
                 Button {
                     text: i18n.tr("OK")
-                    color: podphoenix.appTheme.positiveActionButton
+                    color: upod.appTheme.positiveActionButton
                     onClicked: {
-                        podphoenix.settings.skipForward = Math.round(slider.value)
+                        upod.settings.skipForward = Math.round(slider.value)
                         PopupUtils.close(dialogInternal)
                     }
                 }
                 Button {
                     text: i18n.tr("Cancel")
-                    color: podphoenix.appTheme.neutralActionButton
+                    color: upod.appTheme.neutralActionButton
                     onClicked: {
                         PopupUtils.close(dialogInternal)
                     }
@@ -103,22 +103,22 @@ Page {
                     width: parent.width
                     minimumValue: 0
                     maximumValue: 60
-                    value: podphoenix.settings.skipBack
+                    value: upod.settings.skipBack
                     function formatValue(v) { return i18n.tr("%1 seconds").arg(Math.round(v)) }
-                    StyleHints { foregroundColor: podphoenix.appTheme.focusText }
+                    StyleHints { foregroundColor: upod.appTheme.focusText }
                 }
 
                 Button {
                     text: i18n.tr("OK")
-                    color: podphoenix.appTheme.positiveActionButton
+                    color: upod.appTheme.positiveActionButton
                     onClicked: {
-                        podphoenix.settings.skipBack = Math.round(slider.value)
+                        upod.settings.skipBack = Math.round(slider.value)
                         PopupUtils.close(dialogInternal)
                     }
                 }
                 Button {
                     text: i18n.tr("Cancel")
-                    color: podphoenix.appTheme.neutralActionButton
+                    color: upod.appTheme.neutralActionButton
                     onClicked: {
                         PopupUtils.close(dialogInternal)
                     }
@@ -138,22 +138,22 @@ Page {
                     width: parent.width
                     minimumValue: 0
                     maximumValue: 72
-                    value: podphoenix.settings.refreshEpisodes
+                    value: upod.settings.refreshEpisodes
                     function formatValue(v) { return i18n.tr("%1 hours").arg(Math.round(v)) }
-                    StyleHints { foregroundColor: podphoenix.appTheme.focusText }
+                    StyleHints { foregroundColor: upod.appTheme.focusText }
                 }
 
                 Button {
                     text: i18n.tr("OK")
-                    color: podphoenix.appTheme.positiveActionButton
+                    color: upod.appTheme.positiveActionButton
                     onClicked: {
-                        podphoenix.settings.refreshEpisodes = Math.round(slider.value)
+                        upod.settings.refreshEpisodes = Math.round(slider.value)
                         PopupUtils.close(dialogInternal)
                     }
                 }
                 Button {
                     text: i18n.tr("Cancel")
-                    color: podphoenix.appTheme.neutralActionButton
+                    color: upod.appTheme.neutralActionButton
                     onClicked: {
                         PopupUtils.close(dialogInternal)
                     }
@@ -179,7 +179,7 @@ Page {
             SingleValueListItem {
                 divider.visible: false
                 title.text: i18n.tr("Theme")
-                value: podphoenix.settings.themeName.split(".qml")[0] === "Light" ? i18n.tr("Light") : i18n.tr("Dark")
+                value: upod.settings.themeName.split(".qml")[0] === "Light" ? i18n.tr("Light") : i18n.tr("Dark")
                 onClicked: mainStack.push(Qt.resolvedUrl("../settings/ThemeSetting.qml"))
             }
 
@@ -189,8 +189,8 @@ Page {
                     title.text: i18n.tr("Displays podcasts in a list view")
                     Switch {
                         SlotsLayout.position: SlotsLayout.Last
-                        checked: podphoenix.settings.showListView
-                        onClicked: podphoenix.settings.showListView = checked
+                        checked: upod.settings.showListView
+                        onClicked: upod.settings.showListView = checked
                     }
                 }
                 divider.visible: false
@@ -204,14 +204,14 @@ Page {
             SingleValueListItem {
                 divider.visible: false
                 title.text: i18n.tr("Skip forward")
-                value: i18n.tr("%1 seconds").arg(podphoenix.settings.skipForward)
+                value: i18n.tr("%1 seconds").arg(upod.settings.skipForward)
                 onClicked: PopupUtils.open(skipForwardDialog, settingsPage);
             }
 
             SingleValueListItem {
                 divider.visible: false
                 title.text: i18n.tr("Skip back")
-                value: i18n.tr("%1 seconds").arg(podphoenix.settings.skipBack)
+                value: i18n.tr("%1 seconds").arg(upod.settings.skipBack)
                 onClicked: PopupUtils.open(skipBackDialog, settingsPage);
             }
 
@@ -221,8 +221,8 @@ Page {
                     title.text: i18n.tr("Continue where stopped")
                     Switch {
                         SlotsLayout.position: SlotsLayout.Last
-                        checked: podphoenix.settings.continueWhereStopped
-                        onClicked: podphoenix.settings.continueWhereStopped = checked
+                        checked: upod.settings.continueWhereStopped
+                        onClicked: upod.settings.continueWhereStopped = checked
                     }
                 }
                 divider.visible: false
@@ -236,7 +236,7 @@ Page {
             SingleValueListItem {
                 divider.visible: false
                 title.text: i18n.tr("Refresh podcasts after")
-                value: i18n.tr("%1 hours").arg(podphoenix.settings.refreshEpisodes)
+                value: i18n.tr("%1 hours").arg(upod.settings.refreshEpisodes)
                 onClicked: PopupUtils.open(refreshDialog, settingsPage);
             }
 
@@ -244,9 +244,9 @@ Page {
                 ListItemLayout {
                     id: deleteLayout
                     title.text: i18n.tr("Automatically delete old episodes")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     summary.text: i18n.tr("Delete episodes that are older than a given number of days for each podcast")
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
                     ProgressionSlot {}
                 }
                 divider.visible: false
@@ -258,9 +258,9 @@ Page {
                 ListItemLayout {
                     id: downloadLayout
                     title.text: i18n.tr("Automatically download new episodes")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     summary.text: i18n.tr("Default number of new episodes to download for each podcast")
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
                     ProgressionSlot{}
                 }
                 divider.visible: false
@@ -272,13 +272,13 @@ Page {
                 ListItemLayout {
                     id: deleteListened
                     title.text: i18n.tr("Automatically delete listened episodes")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     summary.text: i18n.tr("Automatically delete listened episodes on application start")
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
                     Switch {
                         SlotsLayout.position: SlotsLayout.Last
-                        checked: podphoenix.settings.deleteListened
-                        onClicked: podphoenix.settings.deleteListened = checked
+                        checked: upod.settings.deleteListened
+                        onClicked: upod.settings.deleteListened = checked
                     }
                 }
                 divider.visible: false
@@ -289,13 +289,13 @@ Page {
                 ListItemLayout {
                     id: downloadWifiOnlyLayout
                     title.text: i18n.tr("Only download over WiFi")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     summary.text: i18n.tr("Download episodes only when the device is using WiFi")
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
                     Switch {
                         SlotsLayout.position: SlotsLayout.Last
-                        checked: podphoenix.settings.downloadOverWifiOnly
-                        onClicked: podphoenix.settings.downloadOverWifiOnly = checked
+                        checked: upod.settings.downloadOverWifiOnly
+                        onClicked: upod.settings.downloadOverWifiOnly = checked
                     }
                 }
                 divider.visible: false
@@ -311,9 +311,9 @@ Page {
                 ListItemLayout {
                     id: refreshArt
                     title.text: i18n.tr("Refresh podcast artwork")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     summary.text: i18n.tr("Update all podcasts artwork and fix missing ones")
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
                     summary.maximumLineCount: 3
                     ProgressionSlot{}
                 }
@@ -353,9 +353,9 @@ Page {
                 ListItemLayout {
                     id: orphanLayout
                     title.text: i18n.tr("Delete orphaned files and links")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     summary.text: i18n.tr("Free space by removing orphaned downloaded files and links")
-                    summary.color: podphoenix.appTheme.baseSubText
+                    summary.color: upod.appTheme.baseSubText
                     ProgressionSlot {}
                 }
 
@@ -387,11 +387,11 @@ Page {
                     title: orphanCount > 0 ? i18n.tr("Removed orphaned files and links") : i18n.tr("No orphans found!")
                     text: orphanCount > 0 ? i18n.tr("All orphaned files have been deleted to recover disk space. Orphaned links \
 pointing at invalid files have also been cleaned up.")
-                                          : i18n.tr("No orphaned files have been found to recover disk space. Podphoenix database is clean.")
+                                          : i18n.tr("No orphaned files have been found to recover disk space. uPod database is clean.")
 
                     Button {
                         text: i18n.tr("Close")
-                        color: podphoenix.appTheme.positiveActionButton
+                        color: upod.appTheme.positiveActionButton
                         onClicked: {
                             PopupUtils.close(dialogInternal)
                         }
@@ -409,7 +409,7 @@ pointing at invalid files have also been cleaned up.")
                 ListItemLayout {
                     // TRANSLATORS: About as in information about the app
                     title.text: i18n.tr("About")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     ProgressionSlot {}
                 }
                 divider.visible: false
@@ -419,11 +419,11 @@ pointing at invalid files have also been cleaned up.")
             ListItem {
                 ListItemLayout {
                     title.text: i18n.tr("Report Bug")
-                    title.color: podphoenix.appTheme.baseText
+                    title.color: upod.appTheme.baseText
                     ProgressionSlot {}
                 }
                 divider.visible: false
-                onClicked: Qt.openUrlExternally("https://github.com/ilyakooo0/podphoenix/issues")
+                onClicked: Qt.openUrlExternally("https://github.com/ilyakooo0/upod/issues")
             }
         }
     }

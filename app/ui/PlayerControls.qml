@@ -1,13 +1,13 @@
 /*
  * Copyright 2015-2016 Michael Sheldon <mike@mikeasoft.com>
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -23,7 +23,7 @@ import Ubuntu.Components 1.3
 Rectangle {
     id: controlRect
 
-    color: podphoenix.appTheme.bottomBarBackground
+    color: upod.appTheme.bottomBarBackground
 
     MouseArea {
         z: -1
@@ -47,7 +47,7 @@ Rectangle {
         id: progressBarHint
         anchors.left: parent.left
         anchors.top: cover.bottom
-        color: podphoenix.appTheme.focusText
+        color: upod.appTheme.focusText
         height: units.gu(0.25)
         width: player.duration > 0 ? (player.position / player.duration) * parent.width : 0
     }

@@ -1,15 +1,16 @@
 {
-    "name": "@APP_ID@",
-    "description": "Podcast player — Podbird reborn",
+    "name": "com.upod.app",
+    "description": "Enhanced podcast player for Ubuntu Touch with 
+discovery features",
     "architecture": "@CLICK_ARCH@",
-    "title": "@APP_NAME@",
+    "title": "uPod",
     "hooks": {
-        "Podphoenix": {
-            "apparmor": "Podphoenix.apparmor",
-            "desktop": "Podphoenix.desktop"
+        "upod": {
+            "apparmor": "uPod.apparmor",
+            "desktop": "upod.desktop"
         }
     },
-    "version": "0.1.2.1",
-    "maintainer": "Ilia Kostiuchenko <mail@iko.soy>",
-    "framework": "@CLICK_FRAMEWORK@"
+    "version": "0.2.0",
+    "maintainer": "grechj <joshua.grech@gmail.com>",
+    "framework": "ubuntu-sdk-16.04"
 }

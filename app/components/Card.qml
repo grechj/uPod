@@ -1,13 +1,13 @@
 /*
- * Copyright 2016 Podphoenix Team
+ * Copyright 2016 uPod Team
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -50,7 +50,7 @@ AbstractButton {
         Component {
             id: hintComponent
             Rectangle {
-                color: podphoenix.appTheme.focusText
+                color: upod.appTheme.focusText
                 width: secondaryLabel.implicitWidth + units.gu(1)
                 height: secondaryLabel.implicitHeight + units.gu(1)
                 radius: units.gu(3)
@@ -75,7 +75,7 @@ AbstractButton {
             right: imgFrame.right
             margins: units.gu(1)
         }
-        color: podphoenix.appTheme.baseText
+        color: upod.appTheme.baseText
         elide: Text.ElideRight
         textSize: Label.Small
         wrapMode: Text.WordWrap

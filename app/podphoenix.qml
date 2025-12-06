@@ -1,13 +1,13 @@
 /*
  * Copyright 2015-2016 Michael Sheldon <mike@mikeasoft.com>
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.9
-import Podphoenix 1.0
+import uPod 1.0
 import QtMultimedia 5.9
 import Ubuntu.Connectivity 1.0
 import Qt.labs.settings 1.0
@@ -31,10 +31,10 @@ import "themes" as Themes
 import "podcasts.js" as Podcasts
 
 MainView {
-    id: podphoenix
+    id: upod
 
     objectName: "mainView"
-    applicationName: "soy.iko.podphoenix"
+    applicationName: "soy.iko.upod"
     anchorToKeyboard: true
 
     width: units.gu(50)
@@ -85,12 +85,12 @@ MainView {
         interval: 500
         repeat: false
         onTriggered: {
-            if (!NetworkingStatus.online || podphoenix.settings.maxEpisodeDownload === -1) {
+            if (!NetworkingStatus.online || upod.settings.maxEpisodeDownload === -1) {
                 console.log("[LOG]: Skipped autodownloading of new episodes...")
                 console.log("[LOG]: Online connectivity: " + NetworkingStatus.online)
-                console.log("[LOG]: User settings (maxEpisodeDownload): " + podphoenix.settings.maxEpisodeDownload)
+                console.log("[LOG]: User settings (maxEpisodeDownload): " + upod.settings.maxEpisodeDownload)
             } else {
-                Podcasts.autoDownloadEpisodes(podphoenix.settings.maxEpisodeDownload)
+                Podcasts.autoDownloadEpisodes(upod.settings.maxEpisodeDownload)
             }
         }
     }
@@ -105,7 +105,7 @@ MainView {
         id: themeManager
         source: settings.themeName
         onSourceChanged: {
-            podphoenix.theme.name = settings.themeName == "Dark.qml" ? "Ubuntu.Components.Themes.SuruDark"
+            upod.theme.name = settings.themeName == "Dark.qml" ? "Ubuntu.Components.Themes.SuruDark"
                                                                   : "Ubuntu.Components.Themes.Ambiance"
         }
     }
@@ -190,7 +190,7 @@ MainView {
             return false;
         }
 
-        var singleDownload = singleDownloadComponent.createObject(podphoenix, {"image": image, "title": title, "guid": guid, allowMobileDownload : !disableMobileDownload })
+        var singleDownload = singleDownloadComponent.createObject(upod, {"image": image, "title": title, "guid": guid, allowMobileDownload : !disableMobileDownload })
         singleDownload.download(url)
     }
 
@@ -285,7 +285,7 @@ MainView {
         }
 
         function savePosition() {
-            podphoenix.settings.playlistIndex = playlist.currentIndex
+            upod.settings.playlistIndex = playlist.currentIndex
             if (currentGuid) {
                 var db = Podcasts.init()
                 db.transaction(function (tx) {
@@ -306,8 +306,8 @@ MainView {
                     player.playlist.addItem(episode.url)
                 }
             })
-            if(playlist.itemCount > podphoenix.settings.playlistIndex)
-                playlist.currentIndex = podphoenix.settings.playlistIndex
+            if(playlist.itemCount > upod.settings.playlistIndex)
+                playlist.currentIndex = upod.settings.playlistIndex
         }
 
         function restorePosition() {
@@ -379,7 +379,7 @@ MainView {
                 currentArtist = meta.artist
                 currentImage = meta.image
                 currentGuid = meta.guid
-                player.pendingSeek = podphoenix.settings.continueWhereStopped && meta.position > 5000 ? meta.position : 0
+                player.pendingSeek = upod.settings.continueWhereStopped && meta.position > 5000 ? meta.position : 0
             }
         }
 

@@ -1,13 +1,13 @@
 /*
- * Copyright 2015-2016 Podphoenix Team
+ * Copyright 2015-2016 uPod Team
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -29,7 +29,7 @@ Page {
         title: i18n.tr("Download at most")
         flickable: download
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
     }
 
@@ -63,20 +63,20 @@ Page {
 
             ListItemLayout {
                 title.text: model.name
-                title.color: podphoenix.appTheme.baseText
+                title.color: upod.appTheme.baseText
 
                 Icon {
                     width: units.gu(2)
                     height: width
                     name: "ok"
-                    color: podphoenix.appTheme.baseText
-                    visible: podphoenix.settings.maxEpisodeDownload === model.value
+                    color: upod.appTheme.baseText
+                    visible: upod.settings.maxEpisodeDownload === model.value
                     SlotsLayout.position: SlotsLayout.Trailing
                 }
             }
 
             onClicked: {
-                podphoenix.settings.maxEpisodeDownload = model.value
+                upod.settings.maxEpisodeDownload = model.value
             }
         }
     }

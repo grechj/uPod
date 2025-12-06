@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtTest 1.0
 import Ubuntu.Components 1.1
-import Podphoenix 1.0
+import uPod 1.0
 
 // See more details @ http://qt-project.org/doc/qt-5.0/qtquick/qml-testcase.html
 

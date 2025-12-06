@@ -1,13 +1,13 @@
 /*
- * Copyright 2015-2016 Podphoenix Team
+ * Copyright 2015-2016 uPod Team
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -51,7 +51,7 @@ Page {
         flickable: null
 
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
 
         trailingActionBar.actions: [
@@ -89,7 +89,7 @@ Page {
         }
 
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
 
         contents: Loader {
@@ -114,7 +114,7 @@ Page {
         }
 
         StyleHints {
-            backgroundColor: podphoenix.appTheme.background
+            backgroundColor: upod.appTheme.background
         }
 
         leadingActionBar.actions: [
@@ -164,7 +164,7 @@ Page {
                                     episodeModel.setProperty(index, "queued", 1)
                                     tx.executeSql("UPDATE Episode SET queued=1 WHERE guid = ?", [episodeModel.get(index).guid]);
                                     if (episodeModel.get(index).audiourl) {
-                                        podphoenix.downloadEpisode(episodeModel.get(index).image, episodeModel.get(index).name, episodeModel.get(index).guid, episodeModel.get(index).audiourl, false)
+                                        upod.downloadEpisode(episodeModel.get(index).image, episodeModel.get(index).name, episodeModel.get(index).guid, episodeModel.get(index).audiourl, false)
                                     } else {
                                         console.log("[ERROR]: Invalid download url: " + episodeModel.get(index).audiourl)
                                     }
@@ -302,7 +302,7 @@ Page {
             text: i18n.tr("Are you sure you want to unsubscribe from <b>%1</b>?").arg(episodesPage.episodeName)
             Button {
                 text: i18n.tr("Unsubscribe")
-                color: podphoenix.appTheme.negativeActionButton
+                color: upod.appTheme.negativeActionButton
                 onClicked: {
                     var db = Podcasts.init();
                     db.transaction(function (tx) {
@@ -319,7 +319,7 @@ Page {
             }
             Button {
                 text: i18n.tr("Cancel")
-                color: podphoenix.appTheme.neutralActionButton
+                color: upod.appTheme.neutralActionButton
                 onClicked: {
                     PopupUtils.close(dialogInternal)
                 }
@@ -352,7 +352,7 @@ Page {
 
             Button {
                 text: i18n.tr("Close")
-                color: podphoenix.appTheme.positiveActionButton
+                color: upod.appTheme.positiveActionButton
                 onClicked: {
                     PopupUtils.close(dialogInternal)
                 }
@@ -445,7 +445,7 @@ Page {
                     horizontalAlignment: Text.AlignHCenter
                     maximumLineCount: 2
                     elide: Text.ElideRight
-                    color: podphoenix.appTheme.baseText
+                    color: upod.appTheme.baseText
                     anchors.top: cover.bottom
                     anchors.topMargin: units.gu(2)
                 }
@@ -480,7 +480,7 @@ Page {
                     height: units.gu(0.25)
                     radius: width/3
                     width: sliderContainer.width/3
-                    color: podphoenix.appTheme.focusText
+                    color: upod.appTheme.focusText
                     x: {
                         if (episodesPage.mode === "unheard")
                             return units.gu(2)
@@ -503,7 +503,7 @@ Page {
                     width: sliderContainer.width/3
                     horizontalAlignment: Text.AlignHCenter
                     font.weight: Font.DemiBold
-                    color: episodesPage.mode == "unheard" ? podphoenix.appTheme.focusText : podphoenix.appTheme.baseText
+                    color: episodesPage.mode == "unheard" ? upod.appTheme.focusText : upod.appTheme.baseText
 
                     AbstractButton {
                         anchors.fill: parent
@@ -518,7 +518,7 @@ Page {
                     width: sliderContainer.width/3
                     font.weight: Font.DemiBold
                     horizontalAlignment: Text.AlignHCenter
-                    color: episodesPage.mode == "listened" ? podphoenix.appTheme.focusText : podphoenix.appTheme.baseText
+                    color: episodesPage.mode == "listened" ? upod.appTheme.focusText : upod.appTheme.baseText
 
                     AbstractButton {
                         anchors.fill: parent
@@ -534,7 +534,7 @@ Page {
                     font.weight: Font.DemiBold
                     horizontalAlignment: Text.AlignHCenter
                     text: i18n.tr("Downloaded")
-                    color: episodesPage.mode == "downloaded" ? podphoenix.appTheme.focusText : podphoenix.appTheme.baseText
+                    color: episodesPage.mode == "downloaded" ? upod.appTheme.focusText : upod.appTheme.baseText
 
                     AbstractButton {
                         anchors.fill: parent
@@ -554,7 +554,7 @@ Page {
             id: listItem
 
             divider.visible: false
-            highlightColor: podphoenix.appTheme.hightlightListView
+            highlightColor: upod.appTheme.hightlightListView
             height: visible ? listItemLayout.height + progressBarLoader.height + units.gu(1) : 0
 
             visible: episodesPage.mode == "listened" ? model.listened
@@ -565,8 +565,8 @@ Page {
                 id: listItemLayout
 
                 title.text: model.name !== undefined ? model.name.trim() : "Undefined"
-                title.color: downloader.downloadingGuid === model.guid ? podphoenix.appTheme.focusText
-                                                                       : podphoenix.appTheme.baseText
+                title.color: downloader.downloadingGuid === model.guid ? upod.appTheme.focusText
+                                                                       : upod.appTheme.baseText
                 title.wrapMode: Text.WordWrap
                 title.maximumLineCount: 2
 
@@ -574,7 +574,7 @@ Page {
                                                                                                            : Qt.formatDate(new Date(model.published), "MMM d, yyyy")
                 : model.downloadedfile ? "📎 " + (model.position ? Podcasts.formatEpisodeTime(model.position/1000) + "/" : "") + Podcasts.formatEpisodeTime(model.duration) + " | " + Qt.formatDate(new Date(model.published), "MMM d, yyyy")
                 : (model.position ? Podcasts.formatEpisodeTime(model.position/1000) + "/" : "") + Podcasts.formatEpisodeTime(model.duration) + " | " + Qt.formatDate(new Date(model.published), "MMM d, yyyy")
-                subtitle.color: podphoenix.appTheme.baseSubText
+                subtitle.color: upod.appTheme.baseSubText
 
                 padding.top: units.gu(1)
                 padding.bottom: units.gu(0.5)
@@ -631,7 +631,7 @@ Page {
                                 });
                                 episodeModel.setProperty(model.index, "queued", 1)
                                 if (model.audiourl) {
-                                    podphoenix.downloadEpisode(model.image, model.name, model.guid, model.audiourl, false)
+                                    upod.downloadEpisode(model.image, model.name, model.guid, model.audiourl, false)
                                 } else {
                                     console.log("[ERROR]: Invalid download url: " + model.audiourl)
                                 }

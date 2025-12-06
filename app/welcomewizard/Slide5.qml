@@ -1,13 +1,13 @@
 /*
- * Copyright 2016 Podphoenix Team
+ * Copyright 2016 uPod Team
  *
- * This file is part of Podphoenix.
+ * This file is part of uPod.
  *
- * Podphoenix is free software; you can redistribute it and/or modify
+ * uPod is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; version 3.
  *
- * Podphoenix is distributed in the hope that it will be useful,
+ * uPod is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -60,7 +60,7 @@ Component {
             }
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
-            linkColor: podphoenix.appTheme.linkText
+            linkColor: upod.appTheme.linkText
             text: i18n.tr("Episodes can be swiped left to reveal more actions (or right click if you're using a mouse). You can also multi-select them by long-pressing on an episode.")
             onLinkActivated: Qt.openUrlExternally(link)
         }
